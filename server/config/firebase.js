@@ -25,9 +25,10 @@ const initFirebase = () => {
       console.log('Firebase Admin SDK initialized successfully with ENV JSON string.');
     } else {
       console.warn('⚠️ Warning: Firebase Service Account file not found at:', resolvedPath);
-      console.warn('Firebase Admin SDK initializing with default app credential / applicationDefault fallback.');
+      const projectId = process.env.FIREBASE_PROJECT_ID || 'app-qr-f5e62';
+      console.warn(`Firebase Admin SDK initializing with projectId: ${projectId}`);
       firebaseApp = admin.initializeApp({
-        credential: admin.credential.applicationDefault()
+        projectId: projectId
       });
     }
   } catch (err) {

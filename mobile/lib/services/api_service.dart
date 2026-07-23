@@ -4,10 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user.dart';
 
 class ApiService extends ChangeNotifier {
-  // Default API Base URL: 10.0.2.2 for Android Emulator, localhost for iOS/Web/Desktop
-  static String baseUrl = kIsWeb || defaultTargetPlatform != TargetPlatform.android
-      ? 'http://localhost:5000'
-      : 'http://10.0.2.2:5000';
+  // Production API Base URL deployed on Render
+  static String baseUrl = 'https://qr-based-app.onrender.com';
 
   final Dio _dio = Dio(BaseOptions(
     baseUrl: baseUrl,
