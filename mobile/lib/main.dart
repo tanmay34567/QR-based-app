@@ -11,13 +11,9 @@ void main() async {
 
   try {
     if (Firebase.apps.isEmpty) {
-      if (kIsWeb) {
-        await Firebase.initializeApp(
-          options: DefaultFirebaseOptions.web,
-        );
-      } else {
-        await Firebase.initializeApp();
-      }
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
     }
   } catch (e) {
     debugPrint('Firebase initialization notice: $e');
